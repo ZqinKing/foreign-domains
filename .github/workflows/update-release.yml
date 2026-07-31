@@ -1,0 +1,140 @@
+﻿name: Update and Release
+
+on:
+  schedule:
+    # Daily 16:20 UTC ~= 00:20 Asia/Shanghai
+    - cron: "20 16 * * *"
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - "scripts/**"
+      - ".github/workflows/**"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-release
+  cancel-in-progress: true
+
+jobs:
+  build-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build lists
+        env:
+          GEOVIEW_VERSION: "0.2.6"
+        run: |
+          python scripts/build.py --dist dist --cache .cache --with-json
+
+      - name: Show metadata
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          meta = json.loads(Path("dist/build-meta.json").read_text(encoding="utf-8"))
+          print(json.dumps(meta, ensure_ascii=True, indent=2))
+          for name in [
+              "pure-foreign.txt",
+              "pure-foreign.conf",
+              "pure-foreign-0.0.0.0.conf",
+              "pure-foreign.json",
+              "build-meta.json",
+          ]:
+              p = Path("dist") / name
+              print(f"{name}: {p.stat().st_size} bytes")
+          PY
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: pure-foreign-lists
+          path: |
+            dist/pure-foreign.txt
+            dist/pure-foreign.conf
+            dist/pure-foreign-0.0.0.0.conf
+            dist/pure-foreign.json
+            dist/build-meta.json
+          if-no-files-found: error
+
+      - name: Prepare release notes
+        id: meta
+        run: |
+          set -euo pipefail
+          DATE_TAG="$(date -u +%Y%m%d%H%M)"
+          COUNT="$(python -c 'import json;print(json.load(open("dist/build-meta.json",encoding="utf-8"))["counts"]["domains"])')"
+          GEN_AT="$(python -c 'import json;print(json.load(open("dist/build-meta.json",encoding="utf-8"))["generated_at"])')"
+          echo "tag=${DATE_TAG}" >> "$GITHUB_OUTPUT"
+          echo "count=${COUNT}" >> "$GITHUB_OUTPUT"
+          echo "generated_at=${GEN_AT}" >> "$GITHUB_OUTPUT"
+          cat > release-notes.md <<EOF
+          ## pure-foreign-domains ${DATE_TAG}
+
+          - Formula: \`ban = (geolocation-!cn | union(*@!cn)) - union(*@cn)\`
+          - Domains: **${COUNT}**
+          - Generated at: \`${GEN_AT}\`
+          - Source: [v2fly/domain-list-community](https://github.com/v2fly/domain-list-community) \`dlc.dat\`
+          - Tool: [snowie2000/geoview](https://github.com/snowie2000/geoview)
+
+          ### Files
+
+          | File | Description |
+          |---|---|
+          | \`pure-foreign.conf\` | dnsmasq conf (NXDOMAIN) |
+          | \`pure-foreign-0.0.0.0.conf\` | dnsmasq conf (0.0.0.0) |
+          | \`pure-foreign.txt\` | plain domain list |
+          | \`pure-foreign.json\` | JSON list + metadata |
+          | \`build-meta.json\` | build metadata |
+
+          ### dnsmasq
+
+          \`\`\`conf
+          conf-file=/path/to/pure-foreign.conf
+          \`\`\`
+
+          ### Stable raw links
+
+          After this workflow finishes, stable files are also on the \`latest\` branch:
+
+          - \`pure-foreign.conf\`
+          - \`pure-foreign-0.0.0.0.conf\`
+          - \`pure-foreign.txt\`
+          - \`build-meta.json\`
+          EOF
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.meta.outputs.tag }}
+          name: pure-foreign ${{ steps.meta.outputs.tag }}
+          body_path: release-notes.md
+          files: |
+            dist/pure-foreign.txt
+            dist/pure-foreign.conf
+            dist/pure-foreign-0.0.0.0.conf
+            dist/pure-foreign.json
+            dist/build-meta.json
+          fail_on_unmatched_files: true
+          generate_release_notes: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish stable files to latest branch
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: latest
+          force_orphan: true
+          enable_jekyll: true
+          commit_message: "chore: update pure-foreign lists ${{ steps.meta.outputs.tag }}"

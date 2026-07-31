@@ -1,0 +1,2 @@
+﻿# Generated release artifacts are published via GitHub Actions.
+# Local builds write to dist/.

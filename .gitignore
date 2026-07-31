@@ -1,0 +1,10 @@
+﻿# local build
+.cache/
+build/
+dist/
+*.dat
+*.exe
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
