@@ -2,8 +2,8 @@ name: Update and Release
 
 on:
   schedule:
-    # Daily 16:20 UTC ~= 00:20 Asia/Shanghai
-    - cron: "20 16 * * *"
+    # Monthly at 16:20 UTC on day 1 ~= 00:20 Asia/Shanghai on day 2
+    - cron: "20 16 1 * *"
   workflow_dispatch:
   push:
     branches:
