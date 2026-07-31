@@ -1,4 +1,4 @@
-﻿# pure-foreign-domains
+# foreign-domains
 
 自动生成「纯境外」域名封禁清单，并发布适用于 **dnsmasq** 的配置，以及纯域名 list。
 

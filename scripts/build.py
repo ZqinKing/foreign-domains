@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """Build pure-foreign domain block lists for dnsmasq.
 
@@ -45,7 +45,7 @@ def download(url: str, dest: Path) -> None:
     dest.parent.mkdir(parents=True, exist_ok=True)
     tmp = dest.with_suffix(dest.suffix + ".tmp")
     log(f"download: {url}")
-    req = urllib.request.Request(url, headers={"User-Agent": "pure-foreign-domains-builder"})
+    req = urllib.request.Request(url, headers={"User-Agent": "foreign-domains-builder"})
     with urllib.request.urlopen(req, timeout=120) as resp, open(tmp, "wb") as fh:
         shutil.copyfileobj(resp, fh)
     tmp.replace(dest)
@@ -389,7 +389,7 @@ def build(args: argparse.Namespace) -> int:
         f"# formula: {FORMULA}",
         f"# count: {len(domains)}",
         "# block mode: NXDOMAIN (address=/domain/)",
-        "# project: pure-foreign-domains",
+        "# project: foreign-domains",
         "",
     ]
     conf_lines.extend(f"address=/{d}/" for d in domains)
@@ -402,7 +402,7 @@ def build(args: argparse.Namespace) -> int:
         f"# formula: {FORMULA}",
         f"# count: {len(domains)}",
         "# block mode: 0.0.0.0",
-        "# project: pure-foreign-domains",
+        "# project: foreign-domains",
         "",
     ]
     conf0_lines.extend(f"address=/{d}/0.0.0.0" for d in domains)

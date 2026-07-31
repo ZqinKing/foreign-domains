@@ -1,4 +1,4 @@
-﻿name: Update and Release
+name: Update and Release
 
 on:
   schedule:
@@ -86,7 +86,7 @@ jobs:
           generated_at = "${GEN_AT}"
 
           notes = f"""\
-          ## pure-foreign-domains {tag}
+          ## foreign-domains {tag}
 
           - Formula: `ban = (geolocation-!cn | union(*@!cn)) - union(*@cn)`
           - Domains: **{count}**

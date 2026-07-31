@@ -27,7 +27,7 @@ After the first push, GitHub Actions will run automatically and publish:
 If GitHub CLI is installed and authenticated:
 
 ```bash
-gh repo create pure-foreign-domains --public --source . --remote origin --push
+gh repo create foreign-domains --public --source . --remote origin --push
 ```
 
 ## Stable Raw URLs
