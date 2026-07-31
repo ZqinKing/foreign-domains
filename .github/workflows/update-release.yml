@@ -77,40 +77,50 @@ jobs:
           echo "tag=${DATE_TAG}" >> "$GITHUB_OUTPUT"
           echo "count=${COUNT}" >> "$GITHUB_OUTPUT"
           echo "generated_at=${GEN_AT}" >> "$GITHUB_OUTPUT"
-          cat > release-notes.md <<EOF
-          ## pure-foreign-domains ${DATE_TAG}
+          python - <<PY
+          import textwrap
+          from pathlib import Path
 
-          - Formula: \`ban = (geolocation-!cn | union(*@!cn)) - union(*@cn)\`
-          - Domains: **${COUNT}**
-          - Generated at: \`${GEN_AT}\`
-          - Source: [v2fly/domain-list-community](https://github.com/v2fly/domain-list-community) \`dlc.dat\`
+          tag = "${DATE_TAG}"
+          count = "${COUNT}"
+          generated_at = "${GEN_AT}"
+
+          notes = f"""\
+          ## pure-foreign-domains {tag}
+
+          - Formula: `ban = (geolocation-!cn | union(*@!cn)) - union(*@cn)`
+          - Domains: **{count}**
+          - Generated at: `{generated_at}`
+          - Source: [v2fly/domain-list-community](https://github.com/v2fly/domain-list-community) `dlc.dat`
           - Tool: [snowie2000/geoview](https://github.com/snowie2000/geoview)
 
           ### Files
 
           | File | Description |
           |---|---|
-          | \`pure-foreign.conf\` | dnsmasq conf (NXDOMAIN) |
-          | \`pure-foreign-0.0.0.0.conf\` | dnsmasq conf (0.0.0.0) |
-          | \`pure-foreign.txt\` | plain domain list |
-          | \`pure-foreign.json\` | JSON list + metadata |
-          | \`build-meta.json\` | build metadata |
+          | `pure-foreign.conf` | dnsmasq conf (NXDOMAIN) |
+          | `pure-foreign-0.0.0.0.conf` | dnsmasq conf (0.0.0.0) |
+          | `pure-foreign.txt` | plain domain list |
+          | `pure-foreign.json` | JSON list + metadata |
+          | `build-meta.json` | build metadata |
 
           ### dnsmasq
 
-          \`\`\`conf
+          ```conf
           conf-file=/path/to/pure-foreign.conf
-          \`\`\`
+          ```
 
           ### Stable raw links
 
-          After this workflow finishes, stable files are also on the \`latest\` branch:
+          After this workflow finishes, stable files are also on the `latest` branch:
 
-          - \`pure-foreign.conf\`
-          - \`pure-foreign-0.0.0.0.conf\`
-          - \`pure-foreign.txt\`
-          - \`build-meta.json\`
-          EOF
+          - `pure-foreign.conf`
+          - `pure-foreign-0.0.0.0.conf`
+          - `pure-foreign.txt`
+          - `build-meta.json`
+          """
+          Path("release-notes.md").write_text(textwrap.dedent(notes), encoding="utf-8")
+          PY
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
