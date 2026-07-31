@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Build pure-foreign domain block lists for dnsmasq.
+"""Build foreign domain block lists for dnsmasq.
 
-Scheme B:
+Rule:
   ban = (geolocation-!cn | union(*@!cn)) - union(*@cn)
 
 Source:
@@ -343,7 +343,6 @@ def build(args: argparse.Namespace) -> int:
 
     meta = {
         "generated_at": generated_at,
-        "scheme": "B",
         "formula": FORMULA,
         "source": {
             "geosite_project": "v2fly/domain-list-community",
@@ -414,7 +413,6 @@ def build(args: argparse.Namespace) -> int:
     if args.with_json:
         payload = {
             "name": "pure-foreign",
-            "scheme": "B",
             "formula": FORMULA,
             "count": len(domains),
             "domains": domains,

@@ -2,7 +2,7 @@
 
 This project is already initialized as a local Git repository on branch `main`.
 
-## Option A: GitHub Web
+## GitHub Web
 
 1. Create a new empty repository on GitHub.
 2. Do not initialize it with README, license, or `.gitignore`.
@@ -22,7 +22,7 @@ After the first push, GitHub Actions will run automatically and publish:
 - `pure-foreign.json`
 - `build-meta.json`
 
-## Option B: GitHub CLI
+## GitHub CLI
 
 If GitHub CLI is installed and authenticated:
 
