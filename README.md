@@ -79,7 +79,7 @@ systemctl restart dnsmasq
 
 触发方式：
 
-- 每天定时运行
+- 每月定时运行
 - 手动 `workflow_dispatch`
 - 推送到 `main`，且改动涉及 `scripts/**` 或 `.github/workflows/**`
 
