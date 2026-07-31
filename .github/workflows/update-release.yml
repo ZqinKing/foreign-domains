@@ -69,6 +69,8 @@ jobs:
 
       - name: Prepare release notes
         id: meta
+        env:
+          FORMULA: "ban = (geolocation-!cn | union(*@!cn)) - union(*@cn)"
         run: |
           set -euo pipefail
           DATE_TAG="$(date -u +%Y%m%d%H%M)"
@@ -77,18 +79,21 @@ jobs:
           echo "tag=${DATE_TAG}" >> "$GITHUB_OUTPUT"
           echo "count=${COUNT}" >> "$GITHUB_OUTPUT"
           echo "generated_at=${GEN_AT}" >> "$GITHUB_OUTPUT"
-          python - <<PY
+          export DATE_TAG COUNT GEN_AT
+          python - <<'PY'
+          import os
           import textwrap
           from pathlib import Path
 
-          tag = "${DATE_TAG}"
-          count = "${COUNT}"
-          generated_at = "${GEN_AT}"
+          tag = os.environ["DATE_TAG"]
+          count = os.environ["COUNT"]
+          generated_at = os.environ["GEN_AT"]
+          formula = os.environ["FORMULA"]
 
           notes = f"""\
           ## foreign-domains {tag}
 
-          - 规则：`ban = (geolocation-!cn | union(*@!cn)) - union(*@cn)`
+          - 规则：`{formula}`
           - 域名数量：**{count}**
           - 生成时间：`{generated_at}`
           - 数据源：[v2fly/domain-list-community](https://github.com/v2fly/domain-list-community) `dlc.dat`
