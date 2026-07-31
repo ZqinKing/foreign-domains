@@ -34,7 +34,8 @@ GEOVIEW_RELEASE_BASE = "https://github.com/snowie2000/geoview/releases/download"
 DEFAULT_GEOVIEW_VERSION = "0.2.6"
 BATCH_SIZE = 80
 
-FORMULA = "ban = (geolocation-!cn | union(*@!cn)) - union(*@cn)"
+FORMULA = "ban = (geolocation-!cn | union(*@!cn)) - union(*@cn) - geosite:category-dev"
+EXCLUDED_LISTS = ("category-dev",)
 DOMAIN_LIST_FILE = "foreign-domains.txt"
 DNSMASQ_FILE = "foreign-domains-dnsmasq.conf"
 DNSMASQ_ZERO_FILE = "foreign-domains-dnsmasq-0.0.0.0.conf"
@@ -132,7 +133,9 @@ def run_geoview(geoview: Path, args: list[str]) -> subprocess.CompletedProcess[s
     )
 
 
-def extract_list(geoview: Path, geosite: Path, spec: str, output: Path) -> list[str]:
+def extract_list(
+    geoview: Path, geosite: Path, spec: str, output: Path, require_dot: bool = True
+) -> list[str]:
     if output.exists():
         output.unlink()
     proc = run_geoview(
@@ -159,7 +162,7 @@ def extract_list(geoview: Path, geosite: Path, spec: str, output: Path) -> list[
     domains: list[str] = []
     for line in output.read_text(encoding="utf-8", errors="replace").splitlines():
         d = line.strip().lower()
-        if d and not d.startswith("#") and "." in d:
+        if d and not d.startswith("#") and (not require_dot or "." in d):
             domains.append(d)
     return sorted(set(domains))
 
@@ -303,12 +306,23 @@ def build(args: argparse.Namespace) -> int:
     write_text(tmp / "all-cn-attr.txt", "\n".join(cn_attr) + "\n")
     log(f"@cn: {len(cn_attr)}")
 
+    excluded_domains: set[str] = set()
+    excluded_counts: dict[str, int] = {}
+    for code in EXCLUDED_LISTS:
+        log(f"==> extract excluded list {code}")
+        excluded = extract_list(
+            geoview, geosite, code, tmp / f"exclude-{code}.txt", require_dot=False
+        )
+        excluded_counts[code] = len(excluded)
+        excluded_domains.update(excluded)
+        log(f"exclude {code}: {len(excluded)}")
+
     candidates = sorted(set(foreign) | set(not_cn_attr))
     only_from_notcn = sorted(set(not_cn_attr) - set(foreign))
     log(f"candidates: {len(candidates)} (only @!cn added: {len(only_from_notcn)})")
 
-    exempt_set = set(cn_attr)
-    exempt_list = list(cn_attr)
+    exempt_set = set(cn_attr) | excluded_domains
+    exempt_list = sorted(exempt_set)
 
     raw_diff: list[str] = []
     dnsmasq_safe: list[str] = []
@@ -338,9 +352,11 @@ def build(args: argparse.Namespace) -> int:
     validation = {
         "youtube.com_in_ban": blocked_by_suffix("youtube.com", ban_set),
         "www.youtube.com_blocked_by_suffix": blocked_by_suffix("www.youtube.com", ban_set),
+        "github.com_in_ban": blocked_by_suffix("github.com", ban_set),
+        "category-dev_excluded": not blocked_by_suffix("github.com", ban_set),
         "www.apple.com_in_ban": "www.apple.com" in ban_set,
         "apple.com_in_ban": "apple.com" in ban_set,
-        "www.apple.com_in_cn": "www.apple.com" in exempt_set,
+        "www.apple.com_in_cn": "www.apple.com" in set(cn_attr),
         "bilibili.tv_in_ban": blocked_by_suffix("bilibili.tv", ban_set),
         "aliexpress.ru_in_ban": blocked_by_suffix("aliexpress.ru", ban_set),
         "geolocation-cn@!cn_deprecated_empty": len(deprecated) == 0,
@@ -365,6 +381,8 @@ def build(args: argparse.Namespace) -> int:
             "foreign_geolocation_not_cn": len(foreign),
             "attr_not_cn": len(not_cn_attr),
             "attr_cn": len(cn_attr),
+            "excluded_domains": len(excluded_domains),
+            "excluded_lists": excluded_counts,
             "candidates_foreign_union_notcn": len(candidates),
             "added_only_by_notcn": len(only_from_notcn),
             "raw_diff": len(raw_diff),
@@ -429,6 +447,7 @@ def build(args: argparse.Namespace) -> int:
     required_ok = (
         validation["youtube.com_in_ban"]
         and validation["www.youtube.com_blocked_by_suffix"]
+        and validation["category-dev_excluded"]
         and not validation["www.apple.com_in_ban"]
         and validation["bilibili.tv_in_ban"]
         and validation["geolocation-cn@!cn_deprecated_empty"]

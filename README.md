@@ -5,7 +5,7 @@
 ## 规则
 
 ```text
-ban = (geolocation-!cn | union(*@!cn)) - union(*@cn)
+ban = (geolocation-!cn | union(*@!cn)) - union(*@cn) - geosite:category-dev
 ```
 
 本项目只使用这一条规则。

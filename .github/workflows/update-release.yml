@@ -70,7 +70,7 @@ jobs:
       - name: Prepare release notes
         id: meta
         env:
-          FORMULA: "ban = (geolocation-!cn | union(*@!cn)) - union(*@cn)"
+          FORMULA: "ban = (geolocation-!cn | union(*@!cn)) - union(*@cn) - geosite:category-dev"
         run: |
           set -euo pipefail
           DATE_TAG="$(date -u +%Y%m%d%H%M)"
