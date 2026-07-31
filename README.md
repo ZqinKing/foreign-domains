@@ -1,73 +1,73 @@
 # foreign-domains
 
-Automatically builds and publishes foreign-domain block lists for dnsmasq.
+自动生成并发布「境外域名」封禁清单，主要用于 `dnsmasq`。
 
-## Rule
+## 规则
 
 ```text
 ban = (geolocation-!cn | union(*@!cn)) - union(*@cn)
 ```
 
-This is the only rule used by this project.
+本项目只使用这一条规则。
 
-| Set | Meaning |
+| 集合 | 含义 |
 |---|---|
-| `geolocation-!cn` | Foreign geolocation candidate set |
-| `*@!cn` | Explicitly non-mainland-China entries, including overseas services from China-based companies |
-| `*@cn` | Mainland China access/business entries, excluded from blocking |
+| `geolocation-!cn` | 境外候选集合 |
+| `*@!cn` | 明确标记为非中国大陆的条目，例如中国公司海外业务 |
+| `*@cn` | 有中国大陆接入或中国大陆业务的条目，从封禁清单中排除 |
 
-Data source: [v2fly/domain-list-community](https://github.com/v2fly/domain-list-community) `dlc.dat`.
+数据源：[v2fly/domain-list-community](https://github.com/v2fly/domain-list-community) 的 `dlc.dat`。
 
-Extraction tool: [snowie2000/geoview](https://github.com/snowie2000/geoview).
+提取工具：[snowie2000/geoview](https://github.com/snowie2000/geoview)。
 
-Note: upstream has removed `@!cn` rules from `cn` lists, so `geosite:geolocation-cn@!cn` is no longer available. This project directly unions all `*@!cn` entries instead. See [#390](https://github.com/v2fly/domain-list-community/issues/390), [#3119](https://github.com/v2fly/domain-list-community/pull/3119), and [#3198](https://github.com/v2fly/domain-list-community/pull/3198).
+上游已经将 `@!cn` 规则从 `cn` 列表中剔除，因此 `geosite:geolocation-cn@!cn` 不再可用。本项目直接合并全部 `*@!cn` 条目，不依赖这个已废弃写法。参考：[v2fly/domain-list-community#390](https://github.com/v2fly/domain-list-community/issues/390)、[#3119](https://github.com/v2fly/domain-list-community/pull/3119)、[#3198](https://github.com/v2fly/domain-list-community/pull/3198)。
 
-Expected examples:
+## 示例
 
-| Domain | Result |
+| 域名 | 结果 |
 |---|---|
-| `youtube.com` | blocked |
-| `www.apple.com` | not blocked because it matches `@cn` |
-| `bilibili.tv` | blocked because it matches `@!cn` |
-| `aliexpress.ru` | blocked because it matches `@!cn` |
+| `youtube.com` | 封禁 |
+| `www.apple.com` | 不封禁，因为命中 `@cn` |
+| `bilibili.tv` | 封禁，因为命中 `@!cn` |
+| `aliexpress.ru` | 封禁，因为命中 `@!cn` |
 
-## Release Files
+## 发布产物
 
-Each GitHub Actions run publishes:
+所有发布文件统一使用 `foreign-domains-*` 命名：
 
-| File | Description |
+| 文件 | 说明 |
 |---|---|
-| `pure-foreign.conf` | dnsmasq config, NXDOMAIN mode via `address=/domain/` |
-| `pure-foreign-0.0.0.0.conf` | dnsmasq config, resolves blocked domains to `0.0.0.0` |
-| `pure-foreign.txt` | plain domain list, one domain per line |
-| `pure-foreign.json` | JSON domain list and metadata |
-| `build-meta.json` | build metadata, counts, and validation results |
+| `foreign-domains-dnsmasq.conf` | dnsmasq 配置，使用 `address=/domain/` 返回 NXDOMAIN |
+| `foreign-domains-dnsmasq-0.0.0.0.conf` | dnsmasq 配置，将封禁域名解析到 `0.0.0.0` |
+| `foreign-domains.txt` | 纯域名列表，一行一个域名 |
+| `foreign-domains.json` | JSON 域名清单和元数据 |
+| `foreign-domains-meta.json` | 构建时间、数量和校验结果 |
 
-## Stable URLs
+## 稳定下载地址
 
-After the workflow finishes, stable files are available from the `latest` branch:
+工作流完成后，`latest` 分支会提供稳定直链：
 
 ```text
-https://raw.githubusercontent.com/ZqinKing/foreign-domains/latest/pure-foreign.conf
-https://raw.githubusercontent.com/ZqinKing/foreign-domains/latest/pure-foreign.txt
+https://raw.githubusercontent.com/ZqinKing/foreign-domains/latest/foreign-domains-dnsmasq.conf
+https://raw.githubusercontent.com/ZqinKing/foreign-domains/latest/foreign-domains.txt
 ```
 
-## dnsmasq
+## dnsmasq 使用
 
-Download the dnsmasq file:
+下载配置文件：
 
 ```bash
-curl -fsSL -o /etc/dnsmasq.d/pure-foreign.conf \
-  https://raw.githubusercontent.com/ZqinKing/foreign-domains/latest/pure-foreign.conf
+curl -fsSL -o /etc/dnsmasq.d/foreign-domains.conf \
+  https://raw.githubusercontent.com/ZqinKing/foreign-domains/latest/foreign-domains-dnsmasq.conf
 ```
 
-Then include it from `dnsmasq.conf`:
+在 `dnsmasq.conf` 中引入：
 
 ```conf
-conf-file=/etc/dnsmasq.d/pure-foreign.conf
+conf-file=/etc/dnsmasq.d/foreign-domains.conf
 ```
 
-Restart dnsmasq after updating the file:
+更新后重启 `dnsmasq`：
 
 ```bash
 systemctl restart dnsmasq
@@ -75,50 +75,50 @@ systemctl restart dnsmasq
 
 ## GitHub Actions
 
-Workflow: `.github/workflows/update-release.yml`
+工作流文件：`.github/workflows/update-release.yml`
 
-Triggers:
+触发方式：
 
-- daily schedule
-- manual `workflow_dispatch`
-- push to `main` when `scripts/**` or `.github/workflows/**` changes
+- 每天定时运行
+- 手动 `workflow_dispatch`
+- 推送到 `main`，且改动涉及 `scripts/**` 或 `.github/workflows/**`
 
-The workflow:
+工作流会：
 
-1. Downloads the latest `dlc.dat` and `geoview`.
-2. Builds the domain list with the rule above.
-3. Validates samples such as YouTube, Apple, `@!cn`, and deprecated `geolocation-cn@!cn`.
-4. Uploads build artifacts.
-5. Creates a GitHub Release with generated files.
-6. Publishes stable raw files to the `latest` branch.
+1. 下载最新 `dlc.dat` 和 `geoview`。
+2. 按当前规则生成域名清单。
+3. 校验 YouTube、Apple、`@!cn` 和已废弃的 `geolocation-cn@!cn` 等样本。
+4. 上传构建产物。
+5. 创建 GitHub Release。
+6. 将稳定文件发布到 `latest` 分支。
 
-## Local Build
+## 本地构建
 
-Requirements:
+依赖：
 
 - Python 3.10+
-- network access, unless `--geosite` and `--geoview` point to local files
+- 网络访问，除非通过 `--geosite` 和 `--geoview` 指定本地文件
 
 ```bash
 python scripts/build.py --dist dist --cache .cache --with-json
 ```
 
-Outputs:
+输出文件：
 
 ```text
-dist/pure-foreign.conf
-dist/pure-foreign-0.0.0.0.conf
-dist/pure-foreign.txt
-dist/pure-foreign.json
-dist/build-meta.json
+dist/foreign-domains-dnsmasq.conf
+dist/foreign-domains-dnsmasq-0.0.0.0.conf
+dist/foreign-domains.txt
+dist/foreign-domains.json
+dist/foreign-domains-meta.json
 ```
 
-Use existing local inputs:
+使用本地输入文件：
 
 ```bash
 python scripts/build.py --geosite /path/to/dlc.dat --geoview /path/to/geoview --with-json
 ```
 
-## Disclaimer
+## 免责声明
 
-This project mechanically derives lists from public geosite data. It may contain false positives or false negatives. Test before using it in production.
+本项目根据公开 geosite 数据机械生成清单，可能存在误封或漏封。生产环境使用前建议先测试。

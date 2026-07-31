@@ -35,6 +35,11 @@ DEFAULT_GEOVIEW_VERSION = "0.2.6"
 BATCH_SIZE = 80
 
 FORMULA = "ban = (geolocation-!cn | union(*@!cn)) - union(*@cn)"
+DOMAIN_LIST_FILE = "foreign-domains.txt"
+DNSMASQ_FILE = "foreign-domains-dnsmasq.conf"
+DNSMASQ_ZERO_FILE = "foreign-domains-dnsmasq-0.0.0.0.conf"
+JSON_FILE = "foreign-domains.json"
+META_FILE = "foreign-domains-meta.json"
 
 
 def log(msg: str) -> None:
@@ -371,19 +376,19 @@ def build(args: argparse.Namespace) -> int:
         },
         "validation": validation,
         "artifacts": {
-            "pure-foreign.txt": "plain domain list, one domain per line",
-            "pure-foreign.conf": "dnsmasq conf, NXDOMAIN via address=/domain/",
-            "pure-foreign-0.0.0.0.conf": "dnsmasq conf, address=/domain/0.0.0.0",
-            "build-meta.json": "generation metadata and validation",
+            DOMAIN_LIST_FILE: "纯域名列表，一行一个域名",
+            DNSMASQ_FILE: "dnsmasq 配置，使用 address=/domain/ 返回 NXDOMAIN",
+            DNSMASQ_ZERO_FILE: "dnsmasq 配置，将封禁域名解析到 0.0.0.0",
+            META_FILE: "构建时间、数量和校验结果",
         },
     }
 
-    # plain domain list
-    write_text(dist / "pure-foreign.txt", "\n".join(domains) + "\n")
+    # Domain list.
+    write_text(dist / DOMAIN_LIST_FILE, "\n".join(domains) + "\n")
 
     # dnsmasq NXDOMAIN
     conf_lines = [
-        "# pure-foreign domains for dnsmasq",
+        "# foreign domains for dnsmasq",
         f"# generated_at: {generated_at}",
         f"# formula: {FORMULA}",
         f"# count: {len(domains)}",
@@ -392,11 +397,11 @@ def build(args: argparse.Namespace) -> int:
         "",
     ]
     conf_lines.extend(f"address=/{d}/" for d in domains)
-    write_text(dist / "pure-foreign.conf", "\n".join(conf_lines) + "\n")
+    write_text(dist / DNSMASQ_FILE, "\n".join(conf_lines) + "\n")
 
     # dnsmasq 0.0.0.0
     conf0_lines = [
-        "# pure-foreign domains for dnsmasq",
+        "# foreign domains for dnsmasq",
         f"# generated_at: {generated_at}",
         f"# formula: {FORMULA}",
         f"# count: {len(domains)}",
@@ -405,20 +410,20 @@ def build(args: argparse.Namespace) -> int:
         "",
     ]
     conf0_lines.extend(f"address=/{d}/0.0.0.0" for d in domains)
-    write_text(dist / "pure-foreign-0.0.0.0.conf", "\n".join(conf0_lines) + "\n")
+    write_text(dist / DNSMASQ_ZERO_FILE, "\n".join(conf0_lines) + "\n")
 
-    write_text(dist / "build-meta.json", json.dumps(meta, ensure_ascii=False, indent=2) + "\n")
+    write_text(dist / META_FILE, json.dumps(meta, ensure_ascii=False, indent=2) + "\n")
 
     # optional richer json for debugging/consumers
     if args.with_json:
         payload = {
-            "name": "pure-foreign",
+            "name": "foreign-domains",
             "formula": FORMULA,
             "count": len(domains),
             "domains": domains,
             "meta": meta,
         }
-        write_text(dist / "pure-foreign.json", json.dumps(payload, ensure_ascii=False, indent=2) + "\n")
+        write_text(dist / JSON_FILE, json.dumps(payload, ensure_ascii=False, indent=2) + "\n")
 
     # fail CI if critical validation fails
     required_ok = (
@@ -439,7 +444,7 @@ def build(args: argparse.Namespace) -> int:
 
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
-    p = argparse.ArgumentParser(description="Build pure-foreign domain lists")
+    p = argparse.ArgumentParser(description="Build foreign domain lists")
     p.add_argument("--cache", default=str(DEFAULT_CACHE), help="cache directory")
     p.add_argument("--dist", default=str(DEFAULT_DIST), help="output directory")
     p.add_argument("--geosite", default="", help="path to existing geosite/dlc.dat")
@@ -452,7 +457,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     p.add_argument(
         "--with-json",
         action="store_true",
-        help="also write pure-foreign.json",
+        help=f"also write {JSON_FILE}",
     )
     return p.parse_args(argv)
 

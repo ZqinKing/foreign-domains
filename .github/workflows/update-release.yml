@@ -42,14 +42,14 @@ jobs:
           python - <<'PY'
           import json
           from pathlib import Path
-          meta = json.loads(Path("dist/build-meta.json").read_text(encoding="utf-8"))
+          meta = json.loads(Path("dist/foreign-domains-meta.json").read_text(encoding="utf-8"))
           print(json.dumps(meta, ensure_ascii=True, indent=2))
           for name in [
-              "pure-foreign.txt",
-              "pure-foreign.conf",
-              "pure-foreign-0.0.0.0.conf",
-              "pure-foreign.json",
-              "build-meta.json",
+              "foreign-domains.txt",
+              "foreign-domains-dnsmasq.conf",
+              "foreign-domains-dnsmasq-0.0.0.0.conf",
+              "foreign-domains.json",
+              "foreign-domains-meta.json",
           ]:
               p = Path("dist") / name
               print(f"{name}: {p.stat().st_size} bytes")
@@ -58,13 +58,13 @@ jobs:
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: pure-foreign-lists
+          name: foreign-domains
           path: |
-            dist/pure-foreign.txt
-            dist/pure-foreign.conf
-            dist/pure-foreign-0.0.0.0.conf
-            dist/pure-foreign.json
-            dist/build-meta.json
+            dist/foreign-domains.txt
+            dist/foreign-domains-dnsmasq.conf
+            dist/foreign-domains-dnsmasq-0.0.0.0.conf
+            dist/foreign-domains.json
+            dist/foreign-domains-meta.json
           if-no-files-found: error
 
       - name: Prepare release notes
@@ -72,8 +72,8 @@ jobs:
         run: |
           set -euo pipefail
           DATE_TAG="$(date -u +%Y%m%d%H%M)"
-          COUNT="$(python -c 'import json;print(json.load(open("dist/build-meta.json",encoding="utf-8"))["counts"]["domains"])')"
-          GEN_AT="$(python -c 'import json;print(json.load(open("dist/build-meta.json",encoding="utf-8"))["generated_at"])')"
+          COUNT="$(python -c 'import json;print(json.load(open("dist/foreign-domains-meta.json",encoding="utf-8"))["counts"]["domains"])')"
+          GEN_AT="$(python -c 'import json;print(json.load(open("dist/foreign-domains-meta.json",encoding="utf-8"))["generated_at"])')"
           echo "tag=${DATE_TAG}" >> "$GITHUB_OUTPUT"
           echo "count=${COUNT}" >> "$GITHUB_OUTPUT"
           echo "generated_at=${GEN_AT}" >> "$GITHUB_OUTPUT"
@@ -88,36 +88,36 @@ jobs:
           notes = f"""\
           ## foreign-domains {tag}
 
-          - Formula: `ban = (geolocation-!cn | union(*@!cn)) - union(*@cn)`
-          - Domains: **{count}**
-          - Generated at: `{generated_at}`
-          - Source: [v2fly/domain-list-community](https://github.com/v2fly/domain-list-community) `dlc.dat`
-          - Tool: [snowie2000/geoview](https://github.com/snowie2000/geoview)
+          - 规则：`ban = (geolocation-!cn | union(*@!cn)) - union(*@cn)`
+          - 域名数量：**{count}**
+          - 生成时间：`{generated_at}`
+          - 数据源：[v2fly/domain-list-community](https://github.com/v2fly/domain-list-community) `dlc.dat`
+          - 提取工具：[snowie2000/geoview](https://github.com/snowie2000/geoview)
 
-          ### Files
+          ### 发布文件
 
-          | File | Description |
+          | 文件 | 说明 |
           |---|---|
-          | `pure-foreign.conf` | dnsmasq conf (NXDOMAIN) |
-          | `pure-foreign-0.0.0.0.conf` | dnsmasq conf (0.0.0.0) |
-          | `pure-foreign.txt` | plain domain list |
-          | `pure-foreign.json` | JSON list + metadata |
-          | `build-meta.json` | build metadata |
+          | `foreign-domains-dnsmasq.conf` | dnsmasq 配置，返回 NXDOMAIN |
+          | `foreign-domains-dnsmasq-0.0.0.0.conf` | dnsmasq 配置，解析到 `0.0.0.0` |
+          | `foreign-domains.txt` | 纯域名列表 |
+          | `foreign-domains.json` | JSON 域名清单和元数据 |
+          | `foreign-domains-meta.json` | 构建时间、数量和校验结果 |
 
           ### dnsmasq
 
           ```conf
-          conf-file=/path/to/pure-foreign.conf
+          conf-file=/etc/dnsmasq.d/foreign-domains.conf
           ```
 
-          ### Stable raw links
+          ### 稳定直链
 
-          After this workflow finishes, stable files are also on the `latest` branch:
+          工作流完成后，`latest` 分支会同步以下稳定文件：
 
-          - `pure-foreign.conf`
-          - `pure-foreign-0.0.0.0.conf`
-          - `pure-foreign.txt`
-          - `build-meta.json`
+          - `foreign-domains-dnsmasq.conf`
+          - `foreign-domains-dnsmasq-0.0.0.0.conf`
+          - `foreign-domains.txt`
+          - `foreign-domains-meta.json`
           """
           Path("release-notes.md").write_text(textwrap.dedent(notes), encoding="utf-8")
           PY
@@ -126,14 +126,14 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ steps.meta.outputs.tag }}
-          name: pure-foreign ${{ steps.meta.outputs.tag }}
+          name: foreign-domains ${{ steps.meta.outputs.tag }}
           body_path: release-notes.md
           files: |
-            dist/pure-foreign.txt
-            dist/pure-foreign.conf
-            dist/pure-foreign-0.0.0.0.conf
-            dist/pure-foreign.json
-            dist/build-meta.json
+            dist/foreign-domains.txt
+            dist/foreign-domains-dnsmasq.conf
+            dist/foreign-domains-dnsmasq-0.0.0.0.conf
+            dist/foreign-domains.json
+            dist/foreign-domains-meta.json
           fail_on_unmatched_files: true
           generate_release_notes: false
         env:
@@ -147,4 +147,4 @@ jobs:
           publish_branch: latest
           force_orphan: true
           enable_jekyll: true
-          commit_message: "chore: update pure-foreign lists ${{ steps.meta.outputs.tag }}"
+          commit_message: "chore: update foreign domain lists ${{ steps.meta.outputs.tag }}"
