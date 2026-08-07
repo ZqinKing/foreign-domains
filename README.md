@@ -42,6 +42,7 @@ ban = (geolocation-!cn | union(*@!cn)) - union(*@cn) - geosite:category-dev
 | `foreign-domains.txt` | 纯域名列表，一行一个域名 |
 | `foreign-domains.json` | JSON 域名清单和元数据 |
 | `foreign-domains-meta.json` | 构建时间、数量和校验结果 |
+| `foreign-domains-regexp-report.json` | regexp 自动展开明细和拒绝原因 |
 
 ## GFW 列表
 
@@ -126,6 +127,7 @@ dist/foreign-domains-dnsmasq-0.0.0.0.conf
 dist/foreign-domains.txt
 dist/foreign-domains.json
 dist/foreign-domains-meta.json
+dist/foreign-domains-regexp-report.json
 dist/gfw.txt
 dist/gfw-meta.json
 ```
