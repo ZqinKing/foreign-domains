@@ -37,19 +37,27 @@ jobs:
         run: |
           python scripts/build.py --dist dist --cache .cache --with-json
 
+      - name: Mirror GFW list
+        run: |
+          python scripts/build_gfw.py --dist dist
+
       - name: Show metadata
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
           meta = json.loads(Path("dist/foreign-domains-meta.json").read_text(encoding="utf-8"))
+          gfw = json.loads(Path("dist/gfw-meta.json").read_text(encoding="utf-8"))
           print(json.dumps(meta, ensure_ascii=True, indent=2))
+          print(json.dumps(gfw, ensure_ascii=True, indent=2))
           for name in [
               "foreign-domains.txt",
               "foreign-domains-dnsmasq.conf",
               "foreign-domains-dnsmasq-0.0.0.0.conf",
               "foreign-domains.json",
               "foreign-domains-meta.json",
+              "gfw.txt",
+              "gfw-meta.json",
           ]:
               p = Path("dist") / name
               print(f"{name}: {p.stat().st_size} bytes")
@@ -65,37 +73,40 @@ jobs:
             dist/foreign-domains-dnsmasq-0.0.0.0.conf
             dist/foreign-domains.json
             dist/foreign-domains-meta.json
+            dist/gfw.txt
+            dist/gfw-meta.json
           if-no-files-found: error
 
       - name: Prepare release notes
         id: meta
-        env:
-          FORMULA: "ban = (geolocation-!cn | union(*@!cn)) - union(*@cn) - geosite:category-dev"
         run: |
           set -euo pipefail
           DATE_TAG="$(date -u +%Y%m%d%H%M)"
-          COUNT="$(python -c 'import json;print(json.load(open("dist/foreign-domains-meta.json",encoding="utf-8"))["counts"]["domains"])')"
-          GEN_AT="$(python -c 'import json;print(json.load(open("dist/foreign-domains-meta.json",encoding="utf-8"))["generated_at"])')"
           echo "tag=${DATE_TAG}" >> "$GITHUB_OUTPUT"
-          echo "count=${COUNT}" >> "$GITHUB_OUTPUT"
-          echo "generated_at=${GEN_AT}" >> "$GITHUB_OUTPUT"
-          export DATE_TAG COUNT GEN_AT
+          export DATE_TAG
           python - <<'PY'
           import os
           import textwrap
+          import json
           from pathlib import Path
 
           tag = os.environ["DATE_TAG"]
-          count = os.environ["COUNT"]
-          generated_at = os.environ["GEN_AT"]
-          formula = os.environ["FORMULA"]
+          foreign = json.loads(Path("dist/foreign-domains-meta.json").read_text(encoding="utf-8"))
+          gfw = json.loads(Path("dist/gfw-meta.json").read_text(encoding="utf-8"))
+
+          foreign_count = foreign["counts"]["domains"]
+          foreign_generated_at = foreign["generated_at"]
+          gfw_count = gfw["count"]
+          gfw_generated_at = gfw["generated_at"]
+          gfw_source_url = gfw["source"]["url"]
+          gfw_sha256 = gfw["source"]["sha256"]
 
           notes = f"""\
           ## foreign-domains {tag}
 
-          - 规则：`{formula}`
-          - 域名数量：**{count}**
-          - 生成时间：`{generated_at}`
+          - 规则：`ban = (geolocation-!cn | union(*@!cn)) - union(*@cn) - geosite:category-dev`
+          - 域名数量：**{foreign_count}**
+          - 生成时间：`{foreign_generated_at}`
           - 数据源：[v2fly/domain-list-community](https://github.com/v2fly/domain-list-community) `dlc.dat`
           - 提取工具：[snowie2000/geoview](https://github.com/snowie2000/geoview)
 
@@ -123,6 +134,25 @@ jobs:
           - `foreign-domains-dnsmasq-0.0.0.0.conf`
           - `foreign-domains.txt`
           - `foreign-domains-meta.json`
+
+          ## gfw {tag}
+
+          - 来源：`{gfw_source_url}`
+          - 域名数量：**{gfw_count}**
+          - 生成时间：`{gfw_generated_at}`
+          - 校验值：`{gfw_sha256}`
+
+          ### 发布文件
+
+          | 文件 | 说明 |
+          |---|---|
+          | `gfw.txt` | 上游 `gfw.txt` 的镜像 |
+          | `gfw-meta.json` | 构建时间、数量和校验结果 |
+
+          ### 稳定直链
+
+          - `https://raw.githubusercontent.com/ZqinKing/foreign-domains/latest/gfw.txt`
+          - `https://raw.githubusercontent.com/ZqinKing/foreign-domains/latest/gfw-meta.json`
           """
           Path("release-notes.md").write_text(textwrap.dedent(notes), encoding="utf-8")
           PY
