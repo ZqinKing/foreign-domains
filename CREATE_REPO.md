@@ -21,6 +21,8 @@ git push -u origin main
 - `foreign-domains.txt`
 - `foreign-domains.json`
 - `foreign-domains-meta.json`
+- `gfw.txt`
+- `gfw-meta.json`
 
 ## GitHub CLI
 
@@ -37,6 +39,8 @@ gh repo create foreign-domains --public --source . --remote origin --push
 ```text
 https://raw.githubusercontent.com/ZqinKing/foreign-domains/latest/foreign-domains-dnsmasq.conf
 https://raw.githubusercontent.com/ZqinKing/foreign-domains/latest/foreign-domains.txt
+https://raw.githubusercontent.com/ZqinKing/foreign-domains/latest/gfw.txt
+https://raw.githubusercontent.com/ZqinKing/foreign-domains/latest/gfw-meta.json
 ```
 
 `dnsmasq` 引入方式：

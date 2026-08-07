@@ -33,7 +33,7 @@ ban = (geolocation-!cn | union(*@!cn)) - union(*@cn) - geosite:category-dev
 
 ## 发布产物
 
-所有发布文件统一使用 `foreign-domains-*` 命名：
+`foreign-domains` 这一组发布文件统一使用 `foreign-domains-*` 命名：
 
 | 文件 | 说明 |
 |---|---|
@@ -43,6 +43,17 @@ ban = (geolocation-!cn | union(*@!cn)) - union(*@cn) - geosite:category-dev
 | `foreign-domains.json` | JSON 域名清单和元数据 |
 | `foreign-domains-meta.json` | 构建时间、数量和校验结果 |
 
+## GFW 列表
+
+本项目另行发布上游 `gfw.txt` 的镜像，用于追踪被封禁域名，不和 `foreign-domains` 合并。
+
+数据源：[Loyalsoldier/v2ray-rules-dat](https://github.com/Loyalsoldier/v2ray-rules-dat) 的 `gfw.txt`。
+
+| 文件 | 说明 |
+|---|---|
+| `gfw.txt` | 上游 `gfw.txt` 的镜像 |
+| `gfw-meta.json` | 构建时间、数量和校验结果 |
+
 ## 稳定下载地址
 
 工作流完成后，`latest` 分支会提供稳定直链：
@@ -50,6 +61,8 @@ ban = (geolocation-!cn | union(*@!cn)) - union(*@cn) - geosite:category-dev
 ```text
 https://raw.githubusercontent.com/ZqinKing/foreign-domains/latest/foreign-domains-dnsmasq.conf
 https://raw.githubusercontent.com/ZqinKing/foreign-domains/latest/foreign-domains.txt
+https://raw.githubusercontent.com/ZqinKing/foreign-domains/latest/gfw.txt
+https://raw.githubusercontent.com/ZqinKing/foreign-domains/latest/gfw-meta.json
 ```
 
 ## dnsmasq 使用
@@ -86,11 +99,12 @@ systemctl restart dnsmasq
 工作流会：
 
 1. 下载最新 `dlc.dat` 和 `geoview`。
-2. 按当前规则生成域名清单。
-3. 校验 YouTube、Apple、`@!cn` 和已废弃的 `geolocation-cn@!cn` 等样本。
-4. 上传构建产物。
-5. 创建 GitHub Release。
-6. 将稳定文件发布到 `latest` 分支。
+2. 按当前规则生成 `foreign-domains` 清单。
+3. 单独镜像上游 `gfw.txt`。
+4. 校验 YouTube、Apple、`@!cn` 和已废弃的 `geolocation-cn@!cn` 等样本。
+5. 上传构建产物。
+6. 创建 GitHub Release。
+7. 将稳定文件发布到 `latest` 分支。
 
 ## 本地构建
 
@@ -101,6 +115,7 @@ systemctl restart dnsmasq
 
 ```bash
 python scripts/build.py --dist dist --cache .cache --with-json
+python scripts/build_gfw.py --dist dist
 ```
 
 输出文件：
@@ -111,6 +126,8 @@ dist/foreign-domains-dnsmasq-0.0.0.0.conf
 dist/foreign-domains.txt
 dist/foreign-domains.json
 dist/foreign-domains-meta.json
+dist/gfw.txt
+dist/gfw-meta.json
 ```
 
 使用本地输入文件：
