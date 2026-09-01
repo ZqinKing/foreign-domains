@@ -1,0 +1,59 @@
+{
+  "generated_at": "2026-09-01T19:26:45+00:00",
+  "formula": "ban = (geolocation-!cn | union(*@!cn)) - union(*@cn) - geosite:category-dev",
+  "source": {
+    "geosite_project": "v2fly/domain-list-community",
+    "geosite_file": "dlc.dat",
+    "geosite_size_bytes": 2288345,
+    "tool": "snowie2000/geoview@0.2.6",
+    "notes": [
+      "Rules with @!cn have been cast out from cn lists.",
+      "geosite:geolocation-cn@!cn is no longer available.",
+      "See domain-list-community #390, #3119, #3198."
+    ]
+  },
+  "counts": {
+    "codes": 1539,
+    "foreign_geolocation_not_cn": 24752,
+    "attr_not_cn": 389,
+    "attr_cn": 1160,
+    "excluded_domains": 655,
+    "excluded_lists": {
+      "category-dev": 655
+    },
+    "candidates_foreign_union_notcn": 25079,
+    "candidates_with_regex": 25280,
+    "added_only_by_notcn": 327,
+    "regex_selected": 151,
+    "regex_safe_expanded_rules": 39,
+    "regex_rejected_rules": 112,
+    "regex_expanded_domains": 203,
+    "raw_diff": 23607,
+    "dnsmasq_safe": 23520,
+    "domains": 23308,
+    "removed_exact_or_subdomain_of_cn": 1673,
+    "removed_parent_of_exempt": 87,
+    "deprecated_geolocation_cn_notcn": 0
+  },
+  "validation": {
+    "youtube.com_in_ban": true,
+    "www.youtube.com_blocked_by_suffix": true,
+    "github.com_in_ban": false,
+    "category-dev_excluded": true,
+    "www.apple.com_in_ban": false,
+    "apple.com_in_ban": false,
+    "www.apple.com_in_cn": true,
+    "bilibili.tv_in_ban": true,
+    "aliexpress.ru_in_ban": true,
+    "geolocation-cn@!cn_deprecated_empty": true,
+    "regex_91porn_best_in_ban": true,
+    "regex_91porn_work_in_ban": true
+  },
+  "artifacts": {
+    "foreign-domains.txt": "纯域名列表，一行一个域名",
+    "foreign-domains-dnsmasq.conf": "dnsmasq 配置，使用 address=/domain/ 返回 NXDOMAIN",
+    "foreign-domains-dnsmasq-0.0.0.0.conf": "dnsmasq 配置，将封禁域名解析到 0.0.0.0",
+    "foreign-domains-meta.json": "构建时间、数量和校验结果",
+    "foreign-domains-regexp-report.json": "regexp 自动展开明细和拒绝原因"
+  }
+}

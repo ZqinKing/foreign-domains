@@ -1,0 +1,14 @@
+{
+  "generated_at": "2026-09-01T19:26:45+00:00",
+  "source": {
+    "url": "https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/gfw.txt",
+    "sha256": "433eaa5bfa39e69097211f8483fe500c248eb9a50e5ff4a498365656bffb2c05",
+    "size_bytes": 59106,
+    "line_count": 4388
+  },
+  "count": 4388,
+  "artifacts": {
+    "gfw.txt": "上游 gfw.txt 的镜像",
+    "gfw-meta.json": "构建时间、数量和校验结果"
+  }
+}
