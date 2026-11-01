@@ -1,0 +1,1463 @@
+{
+  "meta": {
+    "selected_regexp_rules": 151,
+    "selected_sources": [
+      "GEOLOCATION-!CN"
+    ],
+    "safe_expanded_regexp_rules": 39,
+    "rejected_regexp_rules": 112,
+    "expanded_domains": 203
+  },
+  "rows": [
+    {
+      "rule": "regexp:(^|\\.)13mei[5-7]\\.buzz$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "safe",
+      "reason": "",
+      "expansion_count": 3,
+      "expansions": [
+        "13mei5.buzz",
+        "13mei6.buzz",
+        "13mei7.buzz"
+      ]
+    },
+    {
+      "rule": "regexp:(^|\\.)18j[efg]\\.life$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "safe",
+      "reason": "",
+      "expansion_count": 3,
+      "expansions": [
+        "18je.life",
+        "18jf.life",
+        "18jg.life"
+      ]
+    },
+    {
+      "rule": "regexp:(^|\\.)18jmttios[0-9]{2}\\.com$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)18tv[1-5]\\.com$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "safe",
+      "reason": "",
+      "expansion_count": 5,
+      "expansions": [
+        "18tv1.com",
+        "18tv2.com",
+        "18tv3.com",
+        "18tv4.com",
+        "18tv5.com"
+      ]
+    },
+    {
+      "rule": "regexp:(^|\\.)1[0-9]{2}\\.one$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)2024(3[0-9]|4[0-9]|6[0-9]|7[0-9])\\.xyz$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)3[0-9]{2}\\.icu$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)3[0-9]{2}\\.one$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)69bag[0-1][1-9]?\\.com$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)783([a-z][a-z]?)?\\.tv$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)7mm0([0-1][0-9]?)?\\.com$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)8dgo[1-57-9]\\.com$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "safe",
+      "reason": "",
+      "expansion_count": 8,
+      "expansions": [
+        "8dgo1.com",
+        "8dgo2.com",
+        "8dgo3.com",
+        "8dgo4.com",
+        "8dgo5.com",
+        "8dgo7.com",
+        "8dgo8.com",
+        "8dgo9.com"
+      ]
+    },
+    {
+      "rule": "regexp:(^|\\.)91cg([1-9]|[0-9][1-9])?.com$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)91p[0-9][0-9]?\\.com$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)91porn[0-9]?\\.store$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)91porn[0-9]{3}\\.me$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)91porn[fvxy]\\.com$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "safe",
+      "reason": "",
+      "expansion_count": 4,
+      "expansions": [
+        "91pornf.com",
+        "91pornv.com",
+        "91pornx.com",
+        "91porny.com"
+      ]
+    },
+    {
+      "rule": "regexp:(^|\\.)91porn\\.(best|com|cool|fun|group|party|plus|site|tw|work)$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "safe",
+      "reason": "",
+      "expansion_count": 10,
+      "expansions": [
+        "91porn.best",
+        "91porn.com",
+        "91porn.cool",
+        "91porn.fun",
+        "91porn.group",
+        "91porn.party",
+        "91porn.plus",
+        "91porn.site",
+        "91porn.tw",
+        "91porn.work"
+      ]
+    },
+    {
+      "rule": "regexp:(^|\\.)91porna[1-7]?\\.com$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "safe",
+      "reason": "",
+      "expansion_count": 8,
+      "expansions": [
+        "91porna.com",
+        "91porna1.com",
+        "91porna2.com",
+        "91porna3.com",
+        "91porna4.com",
+        "91porna5.com",
+        "91porna6.com",
+        "91porna7.com"
+      ]
+    },
+    {
+      "rule": "regexp:(^|\\.)91sew1[1-6]\\.buzz$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "safe",
+      "reason": "",
+      "expansion_count": 6,
+      "expansions": [
+        "91sew11.buzz",
+        "91sew12.buzz",
+        "91sew13.buzz",
+        "91sew14.buzz",
+        "91sew15.buzz",
+        "91sew16.buzz"
+      ]
+    },
+    {
+      "rule": "regexp:(^|\\.)91wang[1-9]\\.com$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)989[a-z]?\\.tv$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)99pp[1-9][0-9]\\.com$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)9cha[0-9]{2}\\.cc$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)[1-5]gaoap\\.com$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "safe",
+      "reason": "",
+      "expansion_count": 5,
+      "expansions": [
+        "1gaoap.com",
+        "2gaoap.com",
+        "3gaoap.com",
+        "4gaoap.com",
+        "5gaoap.com"
+      ]
+    },
+    {
+      "rule": "regexp:(^|\\.)[1-9]+aipai\\.(com|net)$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)[1-9]+zipai\\.(com|net)$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)[1-9]00caocao\\.com$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)[3-9]0000sao\\.com$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "safe",
+      "reason": "",
+      "expansion_count": 7,
+      "expansions": [
+        "30000sao.com",
+        "40000sao.com",
+        "50000sao.com",
+        "60000sao.com",
+        "70000sao.com",
+        "80000sao.com",
+        "90000sao.com"
+      ]
+    },
+    {
+      "rule": "regexp:(^|\\.)[a-z]?fulibl\\.(cc|com|org|net|xyz)$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)[a-z][1-9][0-9][a-z]\\.com$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)aipa(111|222|333|444|555|666|777|888|999)\\.life$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "safe",
+      "reason": "",
+      "expansion_count": 9,
+      "expansions": [
+        "aipa111.life",
+        "aipa222.life",
+        "aipa333.life",
+        "aipa444.life",
+        "aipa555.life",
+        "aipa666.life",
+        "aipa777.life",
+        "aipa888.life",
+        "aipa999.life"
+      ]
+    },
+    {
+      "rule": "regexp:(^|\\.)aisejushi(2|3|5|6)\\.com$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "safe",
+      "reason": "",
+      "expansion_count": 4,
+      "expansions": [
+        "aisejushi2.com",
+        "aisejushi3.com",
+        "aisejushi5.com",
+        "aisejushi6.com"
+      ]
+    },
+    {
+      "rule": "regexp:(^|\\.)aiwei[1-9]{2}\\.buzz$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)apiproxy-device-prod-nlb-.+\\.amazonaws\\.com$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "unsafe",
+      "reason": "unbounded_repeat",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)apiproxy-website-nlb-prod-.+\\.amazonaws\\.com$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "unsafe",
+      "reason": "unbounded_repeat",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)aqdk[0-9]{3}\\.com$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)avcc1[0-9]\\.com$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)avstar0[1-9]\\.(com|me)$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)awjd[1-9]?\\.tv$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)awwcn[1-9]?\\.top$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)banyinjia[0-9]?\\.com$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)bhzyk[1-9]?\\.xyz$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)bibeidh1[6-8]\\.cc$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "safe",
+      "reason": "",
+      "expansion_count": 3,
+      "expansions": [
+        "bibeidh16.cc",
+        "bibeidh17.cc",
+        "bibeidh18.cc"
+      ]
+    },
+    {
+      "rule": "regexp:(^|\\.)bilibili3(0[1-9]|1[0-2])\\.xyz$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)bjini[0-9]{2}\\.buzz$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)byy[0-9][0-9]?\\.icu$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)byyum([3589]|2[235689]|3[34]|4[1-9]|5[1-79]|6[0134679])?\\.com$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)cav1(0[2-9]|1[0-9])\\.com$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)cgbb([1-9]|1[0-9]|20)\\.com$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)chuzs[1-9]{0,2}\\.buzz$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)cosaa[a-z]\\.cyou$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)doufuru[0-9]?\\.cc$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)doufuru[0-9]{2}?\\.xyz$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)douyintt[0-9]\\.me$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)dualstack\\.apiproxy-.+\\.amazonaws\\.com$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "unsafe",
+      "reason": "unbounded_repeat",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)dualstack\\.ichnaea-web-.+\\.amazonaws\\.com$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "unsafe",
+      "reason": "unbounded_repeat",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)fby[1-9]?[0-9]\\.icu$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)fby[1-9]?[0-9]\\.one$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)fi11sm([0-9]+)?\\.com$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)fiftymvapi\\..+$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "unsafe",
+      "reason": "unbounded_repeat",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)flsq[0-9]{2}\\.com$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)forduck[0-1][0-9]\\.com$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)gaogediao\\.(com|me|net|org)$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "safe",
+      "reason": "",
+      "expansion_count": 4,
+      "expansions": [
+        "gaogediao.com",
+        "gaogediao.me",
+        "gaogediao.net",
+        "gaogediao.org"
+      ]
+    },
+    {
+      "rule": "regexp:(^|\\.)gossipfuli[0-9]{3,4}\\.xyz$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)guifw3[1-3]\\.cc$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "safe",
+      "reason": "",
+      "expansion_count": 3,
+      "expansions": [
+        "guifw31.cc",
+        "guifw32.cc",
+        "guifw33.cc"
+      ]
+    },
+    {
+      "rule": "regexp:(^|\\.)h5ccav[1-5]\\.com$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "safe",
+      "reason": "",
+      "expansion_count": 5,
+      "expansions": [
+        "h5ccav1.com",
+        "h5ccav2.com",
+        "h5ccav3.com",
+        "h5ccav4.com",
+        "h5ccav5.com"
+      ]
+    },
+    {
+      "rule": "regexp:(^|\\.)hhmen[1-3]\\.xyz$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "safe",
+      "reason": "",
+      "expansion_count": 3,
+      "expansions": [
+        "hhmen1.xyz",
+        "hhmen2.xyz",
+        "hhmen3.xyz"
+      ]
+    },
+    {
+      "rule": "regexp:(^|\\.)hkfg[1-7]\\.xyz$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "safe",
+      "reason": "",
+      "expansion_count": 7,
+      "expansions": [
+        "hkfg1.xyz",
+        "hkfg2.xyz",
+        "hkfg3.xyz",
+        "hkfg4.xyz",
+        "hkfg5.xyz",
+        "hkfg6.xyz",
+        "hkfg7.xyz"
+      ]
+    },
+    {
+      "rule": "regexp:(^|\\.)hs[1-9]{2}\\.vip$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)jav777\\.(cc|tv|work)$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "safe",
+      "reason": "",
+      "expansion_count": 3,
+      "expansions": [
+        "jav777.cc",
+        "jav777.tv",
+        "jav777.work"
+      ]
+    },
+    {
+      "rule": "regexp:(^|\\.)jb[1-9][0-9]\\.lol$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)jbk0([0-1][0-9]?)?\\.com$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)jdyy[1-9]?\\.me$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)jiuse[0-9]{1,3}\\.com$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)jmtt\\.(app|live|tv|vip)$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "safe",
+      "reason": "",
+      "expansion_count": 4,
+      "expansions": [
+        "jmtt.app",
+        "jmtt.live",
+        "jmtt.tv",
+        "jmtt.vip"
+      ]
+    },
+    {
+      "rule": "regexp:(^|\\.)jstv[0-9]{2}\\.com$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)kdfl[0-9]{2}\\.xyz$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)kimoav([1-9][0-9]?)?\\.com$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)kpkuang\\.(bond|fun|info|one|us)$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "safe",
+      "reason": "",
+      "expansion_count": 5,
+      "expansions": [
+        "kpkuang.bond",
+        "kpkuang.fun",
+        "kpkuang.info",
+        "kpkuang.one",
+        "kpkuang.us"
+      ]
+    },
+    {
+      "rule": "regexp:(^|\\.)ksyp0[1-9]\\.com$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)lianren[1-7]\\.cc$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "safe",
+      "reason": "",
+      "expansion_count": 7,
+      "expansions": [
+        "lianren1.cc",
+        "lianren2.cc",
+        "lianren3.cc",
+        "lianren4.cc",
+        "lianren5.cc",
+        "lianren6.cc",
+        "lianren7.cc"
+      ]
+    },
+    {
+      "rule": "regexp:(^|\\.)llyysp[0-9]{4}\\.top$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)loibus(100|101|202|505|606)\\.top$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "safe",
+      "reason": "",
+      "expansion_count": 5,
+      "expansions": [
+        "loibus100.top",
+        "loibus101.top",
+        "loibus202.top",
+        "loibus505.top",
+        "loibus606.top"
+      ]
+    },
+    {
+      "rule": "regexp:(^|\\.)loibus\\.(cc|com|link)$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "safe",
+      "reason": "",
+      "expansion_count": 3,
+      "expansions": [
+        "loibus.cc",
+        "loibus.com",
+        "loibus.link"
+      ]
+    },
+    {
+      "rule": "regexp:(^|\\.)luchuxue([0-9]{0,5})\\.buzz$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)maa18[0-2][0-9]\\.com$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)madouqu[0-9]{2}\\.cc$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)mdyy[0-1][0-9]\\.com$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)mdyy[0-9][0-9]\\.cc$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)mimi[0-9]{3}\\.com$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)mimi\\.(cfd|lol|onl|sbs|so|vc)$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "safe",
+      "reason": "",
+      "expansion_count": 6,
+      "expansions": [
+        "mimi.cfd",
+        "mimi.lol",
+        "mimi.onl",
+        "mimi.sbs",
+        "mimi.so",
+        "mimi.vc"
+      ]
+    },
+    {
+      "rule": "regexp:(^|\\.)mitao[1-3]\\.tv$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "safe",
+      "reason": "",
+      "expansion_count": 3,
+      "expansions": [
+        "mitao1.tv",
+        "mitao2.tv",
+        "mitao3.tv"
+      ]
+    },
+    {
+      "rule": "regexp:(^|\\.)mmtv[1-5]\\.life$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "safe",
+      "reason": "",
+      "expansion_count": 5,
+      "expansions": [
+        "mmtv1.life",
+        "mmtv2.life",
+        "mmtv3.life",
+        "mmtv4.life",
+        "mmtv5.life"
+      ]
+    },
+    {
+      "rule": "regexp:(^|\\.)mmwz\\.(fun|in|la|me|one|pro|pw|run|tv|ws)$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "safe",
+      "reason": "",
+      "expansion_count": 10,
+      "expansions": [
+        "mmwz.fun",
+        "mmwz.in",
+        "mmwz.la",
+        "mmwz.me",
+        "mmwz.one",
+        "mmwz.pro",
+        "mmwz.pw",
+        "mmwz.run",
+        "mmwz.tv",
+        "mmwz.ws"
+      ]
+    },
+    {
+      "rule": "regexp:(^|\\.)momotk([1-9][0-9]?)?\\.uno$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)nnbw[0-2]\\.xyz$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "safe",
+      "reason": "",
+      "expansion_count": 3,
+      "expansions": [
+        "nnbw0.xyz",
+        "nnbw1.xyz",
+        "nnbw2.xyz"
+      ]
+    },
+    {
+      "rule": "regexp:(^|\\.)putaozy([1-9][0-9]?)?\\.com$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)qqbs([0-9]{2})?\\.vip$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)qqsp0[1-3]\\.com$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "safe",
+      "reason": "",
+      "expansion_count": 3,
+      "expansions": [
+        "qqsp01.com",
+        "qqsp02.com",
+        "qqsp03.com"
+      ]
+    },
+    {
+      "rule": "regexp:(^|\\.)rbp[1-9][0-9]\\.com$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)rbyh[1-9]\\.buzz$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)rule34\\.(asia|us|world|xxx|xyz)$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "safe",
+      "reason": "",
+      "expansion_count": 5,
+      "expansions": [
+        "rule34.asia",
+        "rule34.us",
+        "rule34.world",
+        "rule34.xxx",
+        "rule34.xyz"
+      ]
+    },
+    {
+      "rule": "regexp:(^|\\.)sao[1-6]0000\\.com$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "safe",
+      "reason": "",
+      "expansion_count": 6,
+      "expansions": [
+        "sao10000.com",
+        "sao20000.com",
+        "sao30000.com",
+        "sao40000.com",
+        "sao50000.com",
+        "sao60000.com"
+      ]
+    },
+    {
+      "rule": "regexp:(^|\\.)sbyjs2[6-9]\\.buzz$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "safe",
+      "reason": "",
+      "expansion_count": 4,
+      "expansions": [
+        "sbyjs26.buzz",
+        "sbyjs27.buzz",
+        "sbyjs28.buzz",
+        "sbyjs29.buzz"
+      ]
+    },
+    {
+      "rule": "regexp:(^|\\.)sg11[3-9]\\.me$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "safe",
+      "reason": "",
+      "expansion_count": 7,
+      "expansions": [
+        "sg113.me",
+        "sg114.me",
+        "sg115.me",
+        "sg116.me",
+        "sg117.me",
+        "sg118.me",
+        "sg119.me"
+      ]
+    },
+    {
+      "rule": "regexp:(^|\\.)shdd[0-9]{2}\\.buzz$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)shuangmawei[0-9]{2}\\.buzz$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)smgsp[0-2]?\\.buzz$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "safe",
+      "reason": "",
+      "expansion_count": 4,
+      "expansions": [
+        "smgsp.buzz",
+        "smgsp0.buzz",
+        "smgsp1.buzz",
+        "smgsp2.buzz"
+      ]
+    },
+    {
+      "rule": "regexp:(^|\\.)spankwire[1-9]\\.com$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)ssphb[0-9]{2}\\.xyz$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)supxxx[0-9]{0,2}\\.com$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)sycf[0-9]?\\.xyz$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)syjc1[1-6]\\.xyz$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "safe",
+      "reason": "",
+      "expansion_count": 6,
+      "expansions": [
+        "syjc11.xyz",
+        "syjc12.xyz",
+        "syjc13.xyz",
+        "syjc14.xyz",
+        "syjc15.xyz",
+        "syjc16.xyz"
+      ]
+    },
+    {
+      "rule": "regexp:(^|\\.)tianbiav([1-9]|1[0-6])?\\.com$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)tqav[1-9][0-9]\\.com$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)tt[1-2][0-9]\\.tv$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)ttghg[1-9][0-9]\\.xyz$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)tttv([1-9][0-9]?|100)\\.com$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)twav[1-9]\\.xyz$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)twseb([1-9][0-9]?)?\\.com$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)uu[a-z][1-9][0-9]?\\.com$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)whtdh0[1-3]\\.cc$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "safe",
+      "reason": "",
+      "expansion_count": 3,
+      "expansions": [
+        "whtdh01.cc",
+        "whtdh02.cc",
+        "whtdh03.cc"
+      ]
+    },
+    {
+      "rule": "regexp:(^|\\.)wmm33[0-5]\\.com$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "safe",
+      "reason": "",
+      "expansion_count": 6,
+      "expansions": [
+        "wmm330.com",
+        "wmm331.com",
+        "wmm332.com",
+        "wmm333.com",
+        "wmm334.com",
+        "wmm335.com"
+      ]
+    },
+    {
+      "rule": "regexp:(^|\\.)wyfuli[1-9]\\.net$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)xaa[0-9]?\\.one$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)xaxy[0-9]{2}\\.one$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)xg[0-9]{2}\\.vip$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)xgyy([0-9]{2})?\\.vip$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)xingdh([0-9]{3})?\\.xyz$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)xlywz[1-9]?\\.cc$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)xomfsp[1-9]?\\.buzz$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)xv[0-9]{4}\\.top$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)xxxyaom[0-9]{2}\\.buzz$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)yiren[1-9][0-9]\\.com$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)youyuapi\\..+$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "unsafe",
+      "reason": "unbounded_repeat",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)yrrj[1-9]?\\.buzz$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)yygc[0-9]?\\.xyz$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)zayy([0-9]{0,3})?\\.xyz$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)zh9[0-7]\\.net$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "safe",
+      "reason": "",
+      "expansion_count": 8,
+      "expansions": [
+        "zh90.net",
+        "zh91.net",
+        "zh92.net",
+        "zh93.net",
+        "zh94.net",
+        "zh95.net",
+        "zh96.net",
+        "zh97.net"
+      ]
+    },
+    {
+      "rule": "regexp:(^|\\.)zy[0-9]{4}\\.top$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)zztt[1-6][0-9]\\.com$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:(^|\\.)zzz[1-9][0-9]\\.top$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:.+\\.awsdns-[0-9][0-9]\\.(co\\.uk|com|net|org)$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:.+\\.dkr\\.ecr\\.[^\\.]+\\.amazonaws\\.com$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "unsafe",
+      "reason": "no_subdomain_boundary",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:^[0-9]+vod-adaptive\\.akamaized\\.net$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:^chatgpt-async-webps-prod-\\S+-\\d+\\.webpubsub\\.azure\\.com$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "unsafe",
+      "reason": "no_subdomain_boundary",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:^epicgames-download\\d\\.akamaized\\.net$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "unsafe",
+      "reason": "no_subdomain_boundary",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:^ewcdn[0-9]+\\.nowe\\.com$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "blocked_class",
+      "reason": "contains_blocked_character_class",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:^hses[1-7]?\\.akamaized\\.net$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "unsafe",
+      "reason": "no_subdomain_boundary",
+      "expansion_count": 0,
+      "expansions": []
+    },
+    {
+      "rule": "regexp:javdb\\d+\\.com$",
+      "source_list": "GEOLOCATION-!CN",
+      "status": "unsafe",
+      "reason": "no_subdomain_boundary",
+      "expansion_count": 0,
+      "expansions": []
+    }
+  ]
+}
